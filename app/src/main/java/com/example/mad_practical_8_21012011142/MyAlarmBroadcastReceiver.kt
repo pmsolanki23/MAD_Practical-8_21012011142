@@ -1,24 +1,26 @@
 package com.example.mad_practical_8_21012011142
 
-import android.app.IntentService
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
-class MyAlarmBroadcastReceiver : BroadcastReceiver() {
+class AlarmBroadcastReceiver : BroadcastReceiver() {
     companion object{
-        val ALARMKEY="key"
-        val ALARMSTART="start"
-        val ALARMSTOP="stop"
-
-}
+        val ALARM_KEY = "key"
+        val ALARM_START = "start"
+        val ALARM_STOP = "stop"
+    }
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-       val data =intent.getStringExtra(ALARMKEY)
-        val IntentService=Intent(context,Alarmservice::class.java)
-        if (data== ALARMSTART){
-            context.startService(IntentService)
+
+        val DATA = intent.getStringExtra(ALARM_KEY)
+        val intentservice = Intent(context,AlarmService::class.java)
+        if(DATA == ALARM_START){
+            context.startService(intentservice)
         }
-        else(context.startService(IntentService))
+        else{
+            context.startService(intentservice)
+        }
     }
+
 }

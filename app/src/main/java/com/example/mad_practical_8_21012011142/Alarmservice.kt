@@ -5,8 +5,10 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
 
-class Alarmservice : Service() {
- lateinit var player: MediaPlayer
+class AlarmService : Service() {
+
+    lateinit var  player:MediaPlayer
+
     override fun onBind(intent: Intent): IBinder {
         TODO("Return the communication channel to the service.")
     }
@@ -17,10 +19,11 @@ class Alarmservice : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent!=null){
-            player= MediaPlayer.create(this,R.raw.alarm)
+        if (intent != null){
+            player = MediaPlayer.create(this,R.raw.alarm)
             player.start()
         }
         return START_STICKY
+
     }
 }
